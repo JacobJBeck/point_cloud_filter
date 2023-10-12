@@ -13,7 +13,8 @@ int main(int argc, char **argv)
 
     PointCloud::Ptr msg(new PointCloud);
     msg->header.frame_id = "world";
-    msg->height = msg->width = 1;
+    msg->height = 1;
+    msg->width = 2;
 
     pcl::PointXYZI pt;
     pt.x = 1.0;
@@ -22,6 +23,14 @@ int main(int argc, char **argv)
     pt.intensity = 0.5;
 
     msg->points.push_back(pt);
+
+    pcl::PointXYZI pt2;
+    pt2.x = 1.0;
+    pt2.y = 2.0;
+    pt2.z = 4.0;
+    pt2.intensity = 1.0;
+
+    msg->points.push_back(pt2);
 
     ros::Rate loop_rate(4);
     while (nh.ok())
